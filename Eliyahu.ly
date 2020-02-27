@@ -72,6 +72,10 @@ words = \lyricmode {
 	| e -- li --
 	| ya -- hu 
 	| ha -- na -- vi |
+	| e -- li -- | ya -- hu | ha -- tish -- bi |
+	| e -- li -- ya -- hu | e -- li -- ya -- hu |
+	| e -- li -- ya -- a -- hu | ha -- gi -- la -- di |
+
 }
 
 % words = \lyricmode {
