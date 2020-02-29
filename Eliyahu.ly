@@ -49,8 +49,8 @@ tenorVerse = \relative g' {
 %	| r4. d4 c8 | bes4. bes | g4 f8 d4.
 	| r4. d4 c8 | bes4. bes | g4 f8 bes4.
 
-	| r4. g4 a8 | bes4. g4. | fis4 g8 a4.
-	| fis4. g4 a8 | bes4 c8 | d4 ees8 | d4 c8 | bes4. 
+	| r4. d4 ees8 | f4. d4. | c4 d8 ees4.
+	| c4. d4 ees8 | d4 ees8 | fis4 g8 | g4 fis8 | g4. 
 	
 }
 
@@ -65,7 +65,7 @@ bassVerse = \relative g {
 	| r4. bes'4 a8 | g4. ees | d4 c8 bes4.
 
 	| r4. bes4 c8 | d4. bes4. | a4 bes8 c4.
-	| a4. bes4 c8 | d4 ees8 | d4 ees8 | e4 fis8 | g4. 
+	| a4. bes4 c8 | d4 cis8 | d4 ees8 | e4 fis8 | g4. 
 }
 
 words = \lyricmode {
