@@ -41,7 +41,7 @@ altoVerse = \relative g' {
     
 	| r4. g4 fis8 | d4. d4. | g4 a8 bes4. 
 
-	| r4. bes4 a8 | g4. bes4. | a4 g8 f4. 
+	| r4. g4 g8 | g4. g4. | a4 g8 f4. 
     
 	| a4. g4 fis8 | \tuplet 4/3 { d4 g g fis }
 	| g4 fis8 d4.
@@ -53,7 +53,7 @@ tenorVerse = \relative g {
 %	| r4. d4 c8 | bes4. bes | g4 f8 d4.
 	| r4. bes4 a8 | bes4. bes | d4 c8 bes4.
 
-	| r4. bes4 c8 | d4. d4. | a4 bes8 c4.
+	| r4. bes4 bes8 | bes4. bes4. | a4 bes8 c4.
 
 %	| c4. bes4 c8 | d4 ees8 | fis4 g8 | g4 fis8 | g4. 
 
