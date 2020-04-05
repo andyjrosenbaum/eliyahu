@@ -1,7 +1,7 @@
 \version "2.18.2"  % necessary for upgrading to future LilyPond versions.
 
 \header {
-	title = "Eliyahu v2"
+	title = "Eliyahu v3.2"
 	composer = "Jewish Traditional"
 	arranger = "arr. Andy Rosenbaum Feb 2020"
 }
@@ -78,7 +78,7 @@ bassVerse = \relative g {
 
 %	| a4. g4 a8 | bes4 c8 | d4 ees8 | e4 fis8 | g4. 
 
-	| fis4. g4 d8 | \tuplet 4/3 { d4 cis d d }
+	| fis4. g4 d8 | \tuplet 4/3 { ees4 cis d d }
     | d4 d8 g4. 
 }
 
@@ -141,6 +141,7 @@ bass = {
 
 
 allStuff = {
+\transpose g e {
   \new ChoirStaff <<
     \new Lyrics = "sopranos" \with {
       % this is needed for lyrics above a staff
@@ -179,6 +180,7 @@ allStuff = {
     \context Lyrics = "tenors" \lyricsto "tenors" \words
     \context Lyrics = "basses" \lyricsto "basses" \words
   >>
+  }
 }
 
 % For printed pdf music.
