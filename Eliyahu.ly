@@ -1,9 +1,9 @@
 \version "2.18.2"  % necessary for upgrading to future LilyPond versions.
 
 \header {
-	title = "Eliyahu v3.2"
+	title = "Eliyahu and Miriam v4"
 	composer = "Jewish Traditional"
-	arranger = "arr. Andy Rosenbaum Feb 2020"
+	arranger = "arr. Andy Rosenbaum Pesach 5780 (2020)"
 }
 
 
@@ -82,20 +82,49 @@ bassChorus = \relative g {
 }
 
 wordsChorus = \lyricmode {
-	e -- li --
+	E -- li --
 	| ya -- hu 
 	| ha -- na -- vi
-	| e -- li -- 
+	| E -- li -- 
     | ya -- hu 
     | ha -- tish -- bi 
-	| e -- li -- 
+	| E -- li -- 
     | ya -- hu 
-    | e -- li -- 
+    | E -- li -- 
     | ya -- hu 
-	| e -- li -- 
+	| E -- li -- 
     | ya -- a -- hu ha -- 
     | gi -- la -- di 
 }
+
+wordsChorusM = \lyricmode {
+	Mi -- ri --
+	| am  ha 
+	| n' -- vi' -- ah
+	| oz v' --
+    | zim -- rah 
+    | b' -- ya -- da
+	| Mi -- ri -- 
+    | am tir --
+    | kod i --
+    | ta -- nu
+	| l' ta -- ke -- e -- en
+    | et ha --
+    | o -- lam
+}
+
+% Miriam tirkod itanu letaken et ha-olam.Bim’hera veyameinu hi tevi’einuel mei ha-yeshua.
+
+% https://www.ritualwell.org/ritual/miriam-ha-nviah-1
+% https://www.truah.org/wp-content/uploads/TrHaggadah/OSOTS-15-elijah.pdf
+% First part of Miriam
+	% | Mi -- ri -- 
+    % | am tir --
+    % | kod i --
+    % | ta -- nu
+	% | l' hag -- di -- i -- il
+    % | zim -- rat
+    % | o -- lam
 
 % ===== %
 % verse %
@@ -132,7 +161,7 @@ altoVerse = \relative g' {
     % ya-avo
     | g4 g8 g8
     | fis4. g8
-    | g8 fis8 d4~
+    | g8 d8 d4~
     
     % im mashiach 1
 	  d4 g8 g8
@@ -176,7 +205,7 @@ bassVerse = \relative g {
     % ya-avo
     | bes4 a8 a8
     | a4. g8
-    | g8 d8 g4~
+    | g8 fis8 g4~
     
     % im mashiach 1
 	  g4 c8 c8
@@ -192,40 +221,73 @@ bassVerse = \relative g {
 wordsVerse = \lyricmode {
 	bim' -- he -- 
     | ra v' -- 
-    | ya -- mei -- nu 
+    | ya -- mei -- nu~
     | ya -- a -- 
-    | voh e -- 
-    | leinu
-% im mashiach ben David.
+    | vo e -- 
+    | le -- ei -- nu~
+    
+    im ma -- shi -- ach ben Da -- vid~
+    
+    im ma -- shi -- ach ben Da -- vid
 }
+
+wordsVerseM = \lyricmode {
+	bim' -- he -- 
+    | ra v' -- 
+    | ya -- mei -- nu~
+    
+    | hi -- t' -- 
+    | vi -- i -- 
+    | e -- ei -- nu~
+    
+    el me -- ei ha -- y' -- shu -- ah
+    
+    el me -- ei ha -- y' -- shu -- ah
+}
+
+
+% Miriam tirkod itanu l'taken et ha-olam.
+% Bimheyrah v'yameynu hi t'vi'einu el mey ha-y'shuah.
+
+% ta vi ei nu
+% el  mey ha y' shuah (2x)
+
 
 % ======== %
 % in order %
 % ======== %
 
 sop = {
-	\tempo 4. = 60
-    \time 6/8
-	\sopChorus
-    
-    \tempo 4 = 60
-    \time 2/4
-    \sopVerse
+	\repeat volta 2 {
+        \tempo 4. = 65
+        \time 6/8
+        \sopChorus
+
+        \tempo 4 = 65
+        \time 2/4
+        \sopVerse
+    }
 }
 
 alto = {
-	\altoChorus
-    \altoVerse
+	\repeat volta 2 {
+		\altoChorus
+    	\altoVerse
+    }
 }
 
 tenor = {
-	\tenorChorus
-    \tenorVerse
+	\repeat volta 2 {
+		\tenorChorus
+    	\tenorVerse
+    }
 }
 
 bass = {
-	\bassChorus
-    \bassVerse
+	\repeat volta 2 {
+		\bassChorus
+    	\bassVerse
+    }
 }
 
 
@@ -265,9 +327,30 @@ allStuff = {
     >>
     \new Lyrics = "basses"
     % \context Lyrics = "sopranos" \lyricsto "sopranos" \words
-    \context Lyrics = "altos" \lyricsto "altos" \wordsChorus
+    \context Lyrics = "altos" { 
+    	\lyricsto "altos" { 
+        <<
+        	{ \wordsChorus \wordsVerse }
+            \new Lyrics = "miriam" \with { alignBelowContext = "altos" } {
+            	\set associatedVoice = "altos"
+                \wordsChorusM \wordsVerseM
+            }
+        >>
+		}
+    }
+    
     % \context Lyrics = "tenors" \lyricsto "tenors" \words
-    \context Lyrics = "basses" \lyricsto "basses" \wordsChorus
+    \context Lyrics = "basses" {
+    	\lyricsto "basses" {
+        <<
+    		{ \wordsChorus \wordsVerse }
+            \new Lyrics = "miriam" \with { alignBelowContext = "basses" } {
+            	\set associatedVoice = "basses"
+                \wordsChorusM \wordsVerseM
+        	}
+        >>
+		}
+	}
   >>
   }
 }
