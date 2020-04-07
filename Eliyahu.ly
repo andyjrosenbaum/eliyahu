@@ -134,8 +134,15 @@ altoVerse = \relative g' {
     | fis4. g8
     | g8 fis8 d4~
     
-    % im mashiach
-    | d4 c8 c8
+    % im mashiach 1
+	  d4 g8 g8
+    | g4. g8
+    | g8 g8 aes4~
+    
+    % im mashiach 2
+    | aes4 g8 g8
+    | fis4. g8
+    | g8 fis8 d4
 }
 
 tenorVerse = \relative g' {
@@ -149,8 +156,15 @@ tenorVerse = \relative g' {
     | d4. ees8
     | d8 c8 bes4~
     
-    % im mashiach
-    | bes4 c8 c8
+	% im mashiach 1
+	  bes4 ees8 ees8
+    | ees4. ees8
+    | ees8 ees8 ees4~
+    
+    % im mashiach 2
+    | ees4 d8 d8
+    | c4. c8
+    | c8 c8 bes4
 }
 
 bassVerse = \relative g {
@@ -164,8 +178,15 @@ bassVerse = \relative g {
     | a4. g8
     | g8 d8 g4~
     
-    % im mashiach
-    | g4 c8 c8
+    % im mashiach 1
+	  g4 c8 c8
+    | c4. c8
+    | c8 c8 c4~
+    
+    % im mashiach 2
+    | c4 bes8 a8
+    | a4. d,8
+    | e8 fis8 g4
 }
 
 wordsVerse = \lyricmode {
