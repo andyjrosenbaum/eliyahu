@@ -19,12 +19,11 @@ global = {
   \time 6/8
 }
 
-% ===== %
-% verse %
-% ===== %
+% ====== %
+% chorus %
+% ====== %
 
-% TODO: split triplets and straight notes.
-sopVerse = \relative g' {
+sopChorus = \relative g' {
 	\partial 4. bes4 a8 
 	| g4. g | fis4 d8 g4.
     
@@ -35,7 +34,7 @@ sopVerse = \relative g' {
 	| bes4 a8 g4.
 }
 
-altoVerse = \relative g' {
+altoChorus = \relative g' {
 	\partial 4. g4 fis8 
 	| d4. d | d4 d8 d4.
     
@@ -43,11 +42,11 @@ altoVerse = \relative g' {
 
 	| r4. g4 g8 | g4. g4. | a4 g8 f4. 
     
-	| a4. g4 fis8 | \tuplet 4/3 { d4 g g fis }
+	| a4. g4 fis8 | \tuplet 4/3 { g4 g g fis }
 	| g4 fis8 d4.
 }
 
-tenorVerse = \relative g {
+tenorChorus = \relative g {
 	\partial 4. bes4 a8 
 	| bes4. bes | a4 a8 bes4. 
 %	| r4. d4 c8 | bes4. bes | g4 f8 d4.
@@ -63,7 +62,7 @@ tenorVerse = \relative g {
 }
 
 % also consider ees, and eventually German 6th chord
-bassVerse = \relative g {
+bassChorus = \relative g {
 	\partial 4. bes4 a8 
 	| g4. g | d4 d8 g4. 
 	
@@ -82,7 +81,7 @@ bassVerse = \relative g {
     | d4 d8 g4. 
 }
 
-words = \lyricmode {
+wordsChorus = \lyricmode {
 	e -- li --
 	| ya -- hu 
 	| ha -- na -- vi
@@ -96,7 +95,87 @@ words = \lyricmode {
 	| e -- li -- 
     | ya -- a -- hu ha -- 
     | gi -- la -- di 
+}
 
+% ===== %
+% verse %
+% ===== %
+
+sopVerse = \relative g' {
+	% bim herah
+	  r4 c8 c8
+    | c4. bes8
+    | a8 bes8 c4~
+    
+    % ya-avo
+    | c4 d8 ees8
+    | d4. c8
+    | bes8 a8 g4~
+    
+    % im mashiach 1
+	  g4 c8 c8
+    | c4. bes8
+    | a8 bes8 c4~
+    
+    % im mashiach 2
+    | c4 d8 ees8
+    | d4. c8
+    | bes8 a8 g4~
+}
+
+altoVerse = \relative g' {
+	% bim herah
+	  r4 g8 g8
+    | g4. g8
+    | g8 g8 g4~
+    
+    % ya-avo
+    | g4 g8 g8
+    | fis4. g8
+    | g8 fis8 d4~
+    
+    % im mashiach
+    | d4 c8 c8
+}
+
+tenorVerse = \relative g' {
+	% bim herah
+	  r4 ees8 ees8
+    | ees4. ees8
+    | ees8 ees8 ees4~
+    
+    % ya-avo
+    | ees4 d8 cis8
+    | d4. ees8
+    | d8 c8 bes4~
+    
+    % im mashiach
+    | bes4 c8 c8
+}
+
+bassVerse = \relative g {
+	% bim herah
+	  r4 c8 c8
+    | c4. c8
+    | c8 c8 bes4~
+    
+    % ya-avo
+    | bes4 a8 a8
+    | a4. g8
+    | g8 d8 g4~
+    
+    % im mashiach
+    | g4 c8 c8
+}
+
+wordsVerse = \lyricmode {
+	bim' -- he -- 
+    | ra v' -- 
+    | ya -- mei -- nu 
+    | ya -- a -- 
+    | voh e -- 
+    | leinu
+% im mashiach ben David.
 }
 
 % ======== %
@@ -104,39 +183,28 @@ words = \lyricmode {
 % ======== %
 
 sop = {
-	\sopVerse
-%	\repeat volta 2 \sopChorusCommon
-%	\alternative {
-%		{ \sopChorusEndOne }
-%		{ \sopChorusEndTwo }
-%	}
+	\tempo 4. = 60
+    \time 6/8
+	\sopChorus
+    
+    \tempo 4 = 60
+    \time 2/4
+    \sopVerse
 }
 
 alto = {
-	\altoVerse
-%	\repeat volta 2 \altoChorusCommon 
-%	\alternative {
-%		{ \altoChorusEndOne }
-%		{ \altoChorusEndTwo }
-%	}
+	\altoChorus
+    \altoVerse
 }
 
 tenor = {
-	\tenorVerse
-%	\repeat volta 2 \tenorChorusCommon
-%	\alternative {
-%		{ \tenorChorusEndOne }
-%		{ \tenorChorusEndTwo }
-%	}
+	\tenorChorus
+    \tenorVerse
 }
 
 bass = {
-	\bassVerse 
-%	\repeat volta 2 \bassChorusCommon
-%	\alternative {
-%		{ \bassChorusEndOne }
-%		{ \bassChorusEndTwo }
-%	}
+	\bassChorus
+    \bassVerse
 }
 
 
@@ -175,10 +243,10 @@ allStuff = {
       }
     >>
     \new Lyrics = "basses"
-    \context Lyrics = "sopranos" \lyricsto "sopranos" \words
-    \context Lyrics = "altos" \lyricsto "altos" \words
-    \context Lyrics = "tenors" \lyricsto "tenors" \words
-    \context Lyrics = "basses" \lyricsto "basses" \words
+    % \context Lyrics = "sopranos" \lyricsto "sopranos" \words
+    \context Lyrics = "altos" \lyricsto "altos" \wordsChorus
+    % \context Lyrics = "tenors" \lyricsto "tenors" \words
+    \context Lyrics = "basses" \lyricsto "basses" \wordsChorus
   >>
   }
 }
@@ -194,5 +262,5 @@ allStuff = {
 	\unfoldRepeats {
 		\allStuff
 	}
-	\midi{ \tempo 4 = 100 }
+	\midi{ }
 }
